@@ -3,9 +3,9 @@ package dpaproject;
 public class WeightedEdge {
 	
 	private String u, v;
-	private int w;
+	private byte w;
 	
-	public WeightedEdge(String u, String v, int w) {
+	public WeightedEdge(String u, String v, byte w) {
 		this.u = u;
 		this.v = v;
 		this.w = w;

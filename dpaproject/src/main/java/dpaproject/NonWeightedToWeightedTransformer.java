@@ -51,7 +51,7 @@ public class NonWeightedToWeightedTransformer {
 			} else {
 				String u = edges.get(index-1).getU();
 				String v = edges.get(index-1).getV();
-				WeightedEdge wE = new WeightedEdge(u, v, counter);
+				WeightedEdge wE = new WeightedEdge(u, v, (byte) counter);
 				wEdges.add(wE);
 				counter = 1;
 			}
@@ -59,7 +59,7 @@ public class NonWeightedToWeightedTransformer {
 			if(index+1 == edges.size()) {
 				String u = edges.get(index).getU();
 				String v = edges.get(index).getV();
-				WeightedEdge wE = new WeightedEdge(u, v, counter);
+				WeightedEdge wE = new WeightedEdge(u, v, (byte) counter);
 				wEdges.add(wE);
 			}
 			
@@ -109,33 +109,6 @@ public class NonWeightedToWeightedTransformer {
         }
 	}
 	
-	public void createEdges() {
-		
-		    e = new Edge("2", "3");
-		    edges.add(e);
-		    
-		    e = new Edge("2", "5");
-		    edges.add(e);
-		    
-		    e = new Edge("2", "5");
-		    edges.add(e);
-		    
-		    e = new Edge("2", "5");
-		    edges.add(e);
-		    
-		    e = new Edge("4", "9");
-		    edges.add(e);
-		    
-		    e = new Edge("4", "9");
-		    edges.add(e);
-		    
-		    e = new Edge("6", "3");
-		    edges.add(e);
-		    
-		    e = new Edge("8", "9");
-		    edges.add(e);
-		    
-	}
 
 }
 
