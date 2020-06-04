@@ -1,7 +1,12 @@
 package dpaproject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class NonWeightedToWeightedTransformer { 
@@ -59,6 +64,49 @@ public class NonWeightedToWeightedTransformer {
 			}
 			
 	      }   	
+	}
+	
+	public void createEdgesFromTxt(String filePath) {
+		List<String> values = new ArrayList<String>();
+		Scanner sc2 = null;
+	    try {
+	        sc2 = new Scanner(new File("src/main/resources/nonWeightedGraph.txt"));
+	    } catch (FileNotFoundException e) {
+	        e.printStackTrace();  
+	    }
+	    while (sc2.hasNextLine()) {
+	            Scanner s2 = new Scanner(sc2.nextLine());
+	        while (s2.hasNext()) {
+	            String s = s2.next();
+	            //System.out.println(s);
+	            values.add(s);
+	        }
+	    }
+	    for (int index = 1; index < values.size(); index++) {
+	    	Edge e = new Edge(values.get(index-1), values.get(index));
+	    	edges.add(e);
+	    	index++;
+	    }
+	}
+	
+	public void writeWeightedEdgesToTxt(String filePath) {
+		try {
+            FileWriter writer = new FileWriter(filePath, true);
+            for(WeightedEdge wE : wEdges) {
+            	String u = wE.getU();
+            	String v = wE.getV();
+            	String w = String.valueOf(wE.getW());
+            	writer.write(u);
+            	writer.write(" ");
+            	writer.write(v);
+            	writer.write(" ");
+            	writer.write(w);
+            	writer.write("\r\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	public void createEdges() {
